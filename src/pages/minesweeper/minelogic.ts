@@ -21,27 +21,13 @@ export class Box {
 export class MineLogic {
   public mines: Box[][] = [];
   public MINES_MAX: number = 15;
-  public MINES_LENGTH: number = 10;
+  public MINES_LENGTH: number = 8;
   public randomMines: number[];
   constructor () {
-    this.generateRandomMines();
     this.initGrid();
+    this.generateRandomMines();
     this.setMines();
     this.setAdjacentMines();
-  }
-
-  private generateRandomMines(): void {
-    const randomPlaces: boolean[] = [];
-    this.randomMines = [];
-    let cont: number = 0;
-    do {
-      const rand: number = Math.floor(Math.random() * 100);
-      if (!randomPlaces[rand]) {
-        randomPlaces[rand] = true;
-        this.randomMines.push(rand);
-        cont += 1;
-      }
-    } while (cont < this.MINES_MAX);
   }
 
   public initGrid(): void {
@@ -52,6 +38,25 @@ export class MineLogic {
       }
     }
   }
+
+  private generateRandomMines(): void {
+    const randomPlaces: boolean[] = [];
+    this.randomMines = [];
+    let cont: number = 0;
+    do {
+      const xRand: number = Math.floor(Math.random() * this.MINES_LENGTH );
+      const yRand: number = Math.floor(Math.random() * this.MINES_LENGTH );
+      const rand: number = this.joinNumbers(xRand, yRand);
+      if (!randomPlaces[rand]) {
+        randomPlaces[rand] = true;
+        this.randomMines.push(rand);
+        cont += 1;
+      }
+    } while (cont < this.MINES_MAX);
+  }
+
+  private joinNumbers = (x: number, y: number) => parseInt([x, y].join(''), 10);
+
 
   public setMines(): void {
     const minesPositions: {x: number, y: number}[] = this.randomMines.map( mineNumber => {
@@ -81,33 +86,29 @@ export class MineLogic {
 
   private countAdjacentMines(i: number, j: number): number {
     let minesCount: number = 0;
-    try {
-      if (i > 0 && j > 0 && this.mines[i - 1][j - 1].isMine) {
-        minesCount += 1;
-      }
-      if (i > 0 && this.mines[i - 1][j].isMine) {
-        minesCount += 1;
-      }
-      if (i > 0 && j < this.MINES_LENGTH - 1 &&  this.mines[i - 1][j + 1].isMine) {
-        minesCount += 1;
-      }
-      if (i < this.MINES_LENGTH - 1 && j > 0 && this.mines[i + 1][j - 1].isMine) {
-        minesCount += 1;
-      }
-      if (i < this.MINES_LENGTH - 1 && this.mines[i + 1][j].isMine) {
-        minesCount += 1;
-      }
-      if (i < this.MINES_LENGTH - 1 && j < this.MINES_LENGTH - 1 && this.mines[i + 1][j + 1].isMine) {
-        minesCount += 1;
-      }
-      if (j > 0 && this.mines[i][j - 1].isMine) {
-        minesCount += 1;
-      }
-      if (j < this.MINES_LENGTH - 1 && this.mines[i][j + 1].isMine) {
-        minesCount += 1;
-      }
-    } catch (error) {
-      window.console.log(`Error = ${error}`);
+    if (i > 0 && j > 0 && this.mines[i - 1][j - 1].isMine) {
+      minesCount += 1;
+    }
+    if (i > 0 && this.mines[i - 1][j].isMine) {
+      minesCount += 1;
+    }
+    if (i > 0 && j < this.MINES_LENGTH - 1 &&  this.mines[i - 1][j + 1].isMine) {
+      minesCount += 1;
+    }
+    if (i < this.MINES_LENGTH - 1 && j > 0 && this.mines[i + 1][j - 1].isMine) {
+      minesCount += 1;
+    }
+    if (i < this.MINES_LENGTH - 1 && this.mines[i + 1][j].isMine) {
+      minesCount += 1;
+    }
+    if (i < this.MINES_LENGTH - 1 && j < this.MINES_LENGTH - 1 && this.mines[i + 1][j + 1].isMine) {
+      minesCount += 1;
+    }
+    if (j > 0 && this.mines[i][j - 1].isMine) {
+      minesCount += 1;
+    }
+    if (j < this.MINES_LENGTH - 1 && this.mines[i][j + 1].isMine) {
+      minesCount += 1;
     }
     return minesCount;
   }

@@ -6,13 +6,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="no-scroll">
   <h4>Mines:</h4>
   <mine *ngFor="let row of mines"></mine>
 
   <hr>
   <div *ngFor="let row of mines" style="font-size:30px; font-family:Consolas" >
-    <span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span>
+    <mine *ngFor="let mine of row" [mine]="mine" [width]="100/mines.length" ></mine>
+    <!--span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span-->
   </div>
 
   <ion-icon name="happy"></ion-icon>
