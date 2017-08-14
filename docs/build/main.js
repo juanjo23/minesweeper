@@ -41,7 +41,7 @@ webpackEmptyAsyncContext.id = 151;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MinesweeperController; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__minelogic__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__minelogic__ = __webpack_require__(261);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,7 +71,7 @@ var MinesweeperController = (function () {
 }());
 MinesweeperController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      My Minewesper\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <h4>Mines:</h4>\n  <mine *ngFor="let row of mines"></mine>\n\n  <hr>\n  <div *ngFor="let row of mines" style="font-size:30px; font-family:Consolas" >\n    <span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span>\n  </div>\n\n  <ion-icon name="happy"></ion-icon>\n  <ion-icon name="sad"></ion-icon>\n  <ion-icon name="sad"></ion-icon> <br>\n  <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n  <div class="red">\n    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, sit porro. Dolores, hic similique accusantium deserunt reprehenderit in laudantium nostrum laborum suscipit, modi exercitationem pariatur cum sit aut ex quibusdam!\n  </div>\n</ion-content>\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\minesweeper.template.html"*/
+        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      My Minewesper\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="no-scroll">\n  <h4>Mines:</h4>\n  <mine *ngFor="let row of mines"></mine>\n\n  <hr>\n  <div *ngFor="let row of mines" style="font-size:30px; font-family:Consolas" >\n    <mine *ngFor="let mine of row" [mine]="mine" [width]="100/mines.length" ></mine>\n    <!--span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span-->\n  </div>\n\n  <ion-icon name="happy"></ion-icon>\n  <ion-icon name="sad"></ion-icon>\n  <ion-icon name="sad"></ion-icon> <br>\n  <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n  <div class="red">\n    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, sit porro. Dolores, hic similique accusantium deserunt reprehenderit in laudantium nostrum laborum suscipit, modi exercitationem pariatur cum sit aut ex quibusdam!\n  </div>\n</ion-content>\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\minesweeper.template.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
 ], MinesweeperController);
@@ -104,9 +104,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_minesweeper_mine_mine_component__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_minesweeper_mine_mine_component__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_minesweeper_minesweeper_component__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(262);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -158,6 +158,67 @@ AppModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineController; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MineController = (function () {
+    function MineController() {
+        this.isMine = false;
+        this.adjacentMines = 0;
+        window.console.log(this.mine);
+    }
+    MineController.prototype.ngOnChanges = function (changes) {
+        if (changes.mine && changes.mine.currentValue) {
+            this.isMine = this.mine.isMine;
+            this.adjacentMines = this.mine.adjacentMines;
+        }
+    };
+    MineController.prototype.setAdjacentMines = function (minesCount) {
+        this.adjacentMines = minesCount;
+    };
+    MineController.prototype.toString = function () {
+        if (this.isMine) {
+            return '*';
+        }
+        else if (this.adjacentMines > 0) {
+            return this.adjacentMines + '';
+        }
+        return '-';
+    };
+    return MineController;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], MineController.prototype, "width", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], MineController.prototype, "mine", void 0);
+MineController = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine" [style.width.vw]="width" >\n\n {{ toString() }}\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\mine\mine.template.html"*/
+    }),
+    __metadata("design:paramtypes", [])
+], MineController);
+
+//# sourceMappingURL=mine.component.js.map
+
+/***/ }),
+
+/***/ 261:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export Box */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineLogic; });
 var Box = (function () {
@@ -184,25 +245,13 @@ var MineLogic = (function () {
     function MineLogic() {
         this.mines = [];
         this.MINES_MAX = 15;
-        this.MINES_LENGTH = 10;
-        this.generateRandomMines();
+        this.MINES_LENGTH = 8;
+        this.joinNumbers = function (x, y) { return parseInt([x, y].join(''), 10); };
         this.initGrid();
+        this.generateRandomMines();
         this.setMines();
         this.setAdjacentMines();
     }
-    MineLogic.prototype.generateRandomMines = function () {
-        var randomPlaces = [];
-        this.randomMines = [];
-        var cont = 0;
-        do {
-            var rand = Math.floor(Math.random() * 100);
-            if (!randomPlaces[rand]) {
-                randomPlaces[rand] = true;
-                this.randomMines.push(rand);
-                cont += 1;
-            }
-        } while (cont < this.MINES_MAX);
-    };
     MineLogic.prototype.initGrid = function () {
         for (var i = 0; i < this.MINES_LENGTH; i += 1) {
             this.mines.push([]);
@@ -210,6 +259,21 @@ var MineLogic = (function () {
                 this.mines[i][j] = new Box();
             }
         }
+    };
+    MineLogic.prototype.generateRandomMines = function () {
+        var randomPlaces = [];
+        this.randomMines = [];
+        var cont = 0;
+        do {
+            var xRand = Math.floor(Math.random() * this.MINES_LENGTH);
+            var yRand = Math.floor(Math.random() * this.MINES_LENGTH);
+            var rand = this.joinNumbers(xRand, yRand);
+            if (!randomPlaces[rand]) {
+                randomPlaces[rand] = true;
+                this.randomMines.push(rand);
+                cont += 1;
+            }
+        } while (cont < this.MINES_MAX);
     };
     MineLogic.prototype.setMines = function () {
         var _this = this;
@@ -239,34 +303,29 @@ var MineLogic = (function () {
     };
     MineLogic.prototype.countAdjacentMines = function (i, j) {
         var minesCount = 0;
-        try {
-            if (i > 0 && j > 0 && this.mines[i - 1][j - 1].isMine) {
-                minesCount += 1;
-            }
-            if (i > 0 && this.mines[i - 1][j].isMine) {
-                minesCount += 1;
-            }
-            if (i > 0 && j < this.MINES_LENGTH - 1 && this.mines[i - 1][j + 1].isMine) {
-                minesCount += 1;
-            }
-            if (i < this.MINES_LENGTH - 1 && j > 0 && this.mines[i + 1][j - 1].isMine) {
-                minesCount += 1;
-            }
-            if (i < this.MINES_LENGTH - 1 && this.mines[i + 1][j].isMine) {
-                minesCount += 1;
-            }
-            if (i < this.MINES_LENGTH - 1 && j < this.MINES_LENGTH - 1 && this.mines[i + 1][j + 1].isMine) {
-                minesCount += 1;
-            }
-            if (j > 0 && this.mines[i][j - 1].isMine) {
-                minesCount += 1;
-            }
-            if (j < this.MINES_LENGTH - 1 && this.mines[i][j + 1].isMine) {
-                minesCount += 1;
-            }
+        if (i > 0 && j > 0 && this.mines[i - 1][j - 1].isMine) {
+            minesCount += 1;
         }
-        catch (error) {
-            window.console.log("Error = " + error);
+        if (i > 0 && this.mines[i - 1][j].isMine) {
+            minesCount += 1;
+        }
+        if (i > 0 && j < this.MINES_LENGTH - 1 && this.mines[i - 1][j + 1].isMine) {
+            minesCount += 1;
+        }
+        if (i < this.MINES_LENGTH - 1 && j > 0 && this.mines[i + 1][j - 1].isMine) {
+            minesCount += 1;
+        }
+        if (i < this.MINES_LENGTH - 1 && this.mines[i + 1][j].isMine) {
+            minesCount += 1;
+        }
+        if (i < this.MINES_LENGTH - 1 && j < this.MINES_LENGTH - 1 && this.mines[i + 1][j + 1].isMine) {
+            minesCount += 1;
+        }
+        if (j > 0 && this.mines[i][j - 1].isMine) {
+            minesCount += 1;
+        }
+        if (j < this.MINES_LENGTH - 1 && this.mines[i][j + 1].isMine) {
+            minesCount += 1;
         }
         return minesCount;
     };
@@ -277,7 +336,7 @@ var MineLogic = (function () {
 
 /***/ }),
 
-/***/ 261:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -346,52 +405,6 @@ MyApp = __decorate([
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 262:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineController; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var MineController = (function () {
-    function MineController() {
-        this.isMine = false;
-        this.adjacentMines = 0;
-    }
-    MineController.prototype.setAdjacentMines = function (minesCount) {
-        this.adjacentMines = minesCount;
-    };
-    MineController.prototype.toString = function () {
-        if (this.isMine) {
-            return '*';
-        }
-        else if (this.adjacentMines > 0) {
-            return this.adjacentMines + '';
-        }
-        return '-';
-    };
-    return MineController;
-}());
-MineController = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine">\n\n {{ toString() }}\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\myApp\src\pages\minesweeper\mine\mine.template.html"*/
-    }),
-    __metadata("design:paramtypes", [])
-], MineController);
-
-//# sourceMappingURL=mine.component.js.map
 
 /***/ })
 

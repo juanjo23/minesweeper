@@ -25199,10 +25199,15 @@ ion-navbar.toolbar {
   }
 }
 
+minesweeper .no-scroll .scroll-content {
+  overflow: hidden;
+}
+
 mine .mine {
   text-align: center;
   width: 10vw;
   height: 10vw;
   display: inline-block;
-  background-color: rgba(251, 57, 59, 0.28);
+  background-color: rgba(24, 159, 183, 0.37);
+  border: 1px solid #189fb7;
 }

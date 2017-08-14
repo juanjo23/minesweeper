@@ -4,18 +4,13 @@ $blue: random(256)-1;
 $alpha: random(100)/100;
 
 mine {
-  .content {
-    position: relative;
-    margin: 0 auto;
-    background: red;
-    max-width: 480px;
-  }
   .mine {
     text-align: center;
     width: 10vw;
     height: 10vw;
     display: inline-block;
-    background-color: rgba($red, $green, $blue, $alpha);
-    border: 1px solid rgb($red, $green, $blue);
+
+    background-color: rgba(24, 159, 183, 0.37);
+    border: 1px solid #189fb7;
   }
 }
