@@ -1,0 +1,14 @@
+$red: random(256)-1;
+$green: random(256)-1;
+$blue: random(256)-1;
+$alpha: random(100)/100;
+
+mine {
+  .mine {
+    text-align: center;
+    width: 10vw;
+    height: 10vw;
+    display: inline-block;
+    background-color: rgba($red, $green, $blue, $alpha);
+  }
+}

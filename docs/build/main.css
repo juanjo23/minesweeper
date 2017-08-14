@@ -25198,3 +25198,11 @@ ion-navbar.toolbar {
     padding-top: calc(16px + 20px);
   }
 }
+
+mine .mine {
+  text-align: center;
+  width: 10vw;
+  height: 10vw;
+  display: inline-block;
+  background-color: rgba(251, 57, 59, 0.28);
+}

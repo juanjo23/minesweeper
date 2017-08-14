@@ -4,12 +4,11 @@
 
   <ion-header>
     <ion-toolbar>
-      <ion-title>We will counting stars</ion-title>
+      <ion-title>Main Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <button> doing the right thing </button>
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
