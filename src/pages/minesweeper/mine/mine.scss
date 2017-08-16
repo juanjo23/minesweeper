@@ -1,7 +1,8 @@
-$red: random(256)-1;
-$green: random(256)-1;
-$blue: random(256)-1;
-$alpha: random(100)/100;
+//Material design colors: Blue grey
+$blue-200: rgb(144, 202, 249);
+$blue-200-light: #A1DBFA;
+$blue-200-dark: #80B9E8;
+$blue-300: #64B5F6;
 
 mine {
   .mine {
@@ -10,7 +11,26 @@ mine {
     height: 10vw;
     display: inline-block;
 
-    background-color: rgba(24, 159, 183, 0.37);
-    border: 1px solid #189fb7;
+
+    background: $blue-200;
+
+    border-bottom: 2px solid $blue-200-dark;
+    border-right: 2px solid $blue-200-dark;
+
+    border-top: 2px solid $blue-200-light;
+    border-left: 2px solid $blue-200-light;
+    &:hover {
+      background: red;
+    }
+    &.disabled {
+      background: #dddddf;
+      border: 2px solid #dddddf;
+    }
+  }
+  &.touched {
+    .mine {
+      background: $blue-300;
+      border: 2px solid $blue-300;
+    }
   }
 }

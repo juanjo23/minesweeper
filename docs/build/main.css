@@ -25199,6 +25199,14 @@ ion-navbar.toolbar {
   }
 }
 
+minesweeper .toolbar-background {
+  background: #1976D2;
+}
+
+minesweeper .toolbar-title {
+  color: #f0f0f0;
+}
+
 minesweeper .no-scroll .scroll-content {
   overflow: hidden;
 }
@@ -25208,6 +25216,23 @@ mine .mine {
   width: 10vw;
   height: 10vw;
   display: inline-block;
-  background-color: rgba(24, 159, 183, 0.37);
-  border: 1px solid #189fb7;
+  background: #90caf9;
+  border-bottom: 2px solid #80B9E8;
+  border-right: 2px solid #80B9E8;
+  border-top: 2px solid #A1DBFA;
+  border-left: 2px solid #A1DBFA;
+}
+
+mine .mine:hover {
+  background: red;
+}
+
+mine .mine.disabled {
+  background: #dddddf;
+  border: 2px solid #dddddf;
+}
+
+mine.touched .mine {
+  background: #64B5F6;
+  border: 2px solid #64B5F6;
 }
