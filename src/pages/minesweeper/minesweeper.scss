@@ -1,10 +1,12 @@
 $blue-700: #1976D2;
 minesweeper {
-  .toolbar-background {
-    background: $blue-700;
-  }
-  .toolbar-title {
-    color: #f0f0f0;
+  .main-toolbar {
+    .toolbar-background {
+      background: $blue-700;
+    }
+    .toolbar-title {
+      color: #f0f0f0;
+    }
   }
   .no-scroll .scroll-content{
     overflow: hidden;

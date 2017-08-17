@@ -34,7 +34,7 @@ export class MineController {
     } else if (this.adjacentMines > 0) {
       return this.adjacentMines + '';
     }
-    return '-';
+    return '';
   }
 
 }
