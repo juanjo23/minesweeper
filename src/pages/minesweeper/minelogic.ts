@@ -57,7 +57,6 @@ export class MineLogic {
 
   private joinNumbers = (x: number, y: number) => parseInt([x, y].join(''), 10);
 
-
   public setMines(): void {
     const minesPositions: {x: number, y: number}[] = this.randomMines.map( mineNumber => {
       const nums: string[] = (mineNumber + '').split('');

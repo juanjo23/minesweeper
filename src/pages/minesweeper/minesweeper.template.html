@@ -17,8 +17,8 @@
 
 
 <ion-content class="no-scroll">
-  <div *ngFor="let row of mines" style="font-size:30px; font-family:Consolas" >
-    <mine *ngFor="let mine of row" [mine]="mine" [width]="100/mines.length"></mine>
+  <div *ngFor="let row of mines">
+    <mine *ngFor="let mine of row" [mine]="mine" [total]="mines.length"></mine>
     <!--span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span-->
   </div>
 

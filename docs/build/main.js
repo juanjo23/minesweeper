@@ -38,9 +38,55 @@ webpackEmptyAsyncContext.id = 151;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MinesweeperController; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__minelogic__ = __webpack_require__(261);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MinesweeperController = (function () {
+    function MinesweeperController(navCtrl) {
+        this.navCtrl = navCtrl;
+        this.icon = 'happy';
+        var a = new __WEBPACK_IMPORTED_MODULE_2__minelogic__["a" /* MineLogic */]();
+        this.mines = a.mines;
+    }
+    MinesweeperController.prototype.tapEvent = function () {
+        this.icon = this.icon === 'happy' ? 'sad' : 'happy';
+    };
+    MinesweeperController.prototype.pressEvent = function () {
+        this.icon = this.icon === 'happy' ? 'sad' : 'happy';
+    };
+    return MinesweeperController;
+}());
+MinesweeperController = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n  <ion-navbar class="main-toolbar">\n    <button ion-button menuToggle icon-only>\n      <ion-icon color="light" name=\'menu\'></ion-icon>\n    </button>\n    <ion-title>\n      My Minesweeper\n    </ion-title>\n  </ion-navbar>\n\n  <ion-navbar>\n    <ion-title>\n      <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="no-scroll">\n  <div *ngFor="let row of mines">\n    <mine *ngFor="let mine of row" [mine]="mine" [total]="mines.length"></mine>\n    <!--span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span-->\n  </div>\n\n  <ion-icon name="happy"></ion-icon>\n  <ion-icon name="sad"></ion-icon>\n  <ion-icon name="sad"></ion-icon> <br>\n  <div class="red">\n    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, sit porro. Dolores, hic similique accusantium deserunt reprehenderit in laudantium nostrum laborum suscipit, modi exercitationem pariatur cum sit aut ex quibusdam!\n  </div>\n</ion-content>\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+], MinesweeperController);
+
+//# sourceMappingURL=minesweeper.component.js.map
+
+/***/ }),
+
+/***/ 192:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(211);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -48,7 +94,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 210:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58,8 +104,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_minesweeper_mine_mine_component__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_minesweeper_minesweeper_component__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_minesweeper_mine_mine_component__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_minesweeper_minesweeper_component__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(262);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -108,7 +154,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 259:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -128,16 +174,20 @@ var MineController = (function () {
     function MineController() {
         this.isMine = false;
         this.adjacentMines = 0;
-        window.console.log(this.mine);
+        this.showFlag = false;
     }
     MineController.prototype.ngOnChanges = function (changes) {
         if (changes.mine && changes.mine.currentValue) {
             this.isMine = this.mine.isMine;
             this.adjacentMines = this.mine.adjacentMines;
+            this.isDisabled = this.adjacentMines === 0;
         }
     };
     MineController.prototype.setAdjacentMines = function (minesCount) {
         this.adjacentMines = minesCount;
+    };
+    MineController.prototype.setFlag = function () {
+        this.showFlag = true;
     };
     MineController.prototype.toString = function () {
         if (this.isMine) {
@@ -153,65 +203,19 @@ var MineController = (function () {
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
     __metadata("design:type", Object)
-], MineController.prototype, "width", void 0);
+], MineController.prototype, "total", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
     __metadata("design:type", Object)
 ], MineController.prototype, "mine", void 0);
 MineController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine" [style.width.vw]="width" [style.height.vw]="width" [class.disabled]="mine.adjacentMines === 0">\n\n {{ toString() }}\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
+        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine"\n\n  [style.width.vw]="100/total"\n\n  [style.height.vw]="100/total"\n\n  [class.disabled]="isDisabled"\n\n  (press)="setFlag($event)" >\n\n\n\n\n\n  <div class="img-container" *ngIf="showFlag && !isDisabled">\n\n    <img src="assets/images/flag.svg" alt="Flag">\n\n  </div>\n\n\n\n  <span *ngIf="!showFlag" >\n\n    {{ toString() }}\n\n  </span>\n\n\n\n\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], MineController);
 
 //# sourceMappingURL=mine.component.js.map
-
-/***/ }),
-
-/***/ 260:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MinesweeperController; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__minelogic__ = __webpack_require__(261);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var MinesweeperController = (function () {
-    function MinesweeperController(navCtrl) {
-        this.navCtrl = navCtrl;
-        this.icon = 'happy';
-        var a = new __WEBPACK_IMPORTED_MODULE_2__minelogic__["a" /* MineLogic */]();
-        this.mines = a.mines;
-    }
-    MinesweeperController.prototype.tapEvent = function () {
-        this.icon = this.icon === 'happy' ? 'sad' : 'happy';
-    };
-    MinesweeperController.prototype.pressEvent = function () {
-        this.icon = this.icon === 'happy' ? 'sad' : 'happy';
-    };
-    return MinesweeperController;
-}());
-MinesweeperController = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n  <ion-navbar class="main-toolbar">\n    <button ion-button menuToggle icon-only>\n      <ion-icon color="light" name=\'menu\'></ion-icon>\n    </button>\n    <ion-title>\n      My Minesweeper\n    </ion-title>\n  </ion-navbar>\n\n  <ion-navbar>\n    <ion-title>\n      <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="no-scroll">\n  <div *ngFor="let row of mines" style="font-size:30px; font-family:Consolas" >\n    <mine *ngFor="let mine of row" [mine]="mine" [width]="100/mines.length"></mine>\n    <!--span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span-->\n  </div>\n\n  <ion-icon name="happy"></ion-icon>\n  <ion-icon name="sad"></ion-icon>\n  <ion-icon name="sad"></ion-icon> <br>\n  <div class="red">\n    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, sit porro. Dolores, hic similique accusantium deserunt reprehenderit in laudantium nostrum laborum suscipit, modi exercitationem pariatur cum sit aut ex quibusdam!\n  </div>\n</ion-content>\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
-], MinesweeperController);
-
-//# sourceMappingURL=minesweeper.component.js.map
 
 /***/ }),
 
@@ -345,7 +349,7 @@ var MineLogic = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_minesweeper_minesweeper_component__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_minesweeper_minesweeper_component__ = __webpack_require__(191);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -401,13 +405,12 @@ var MyApp = (function () {
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/'<ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>\n\n<ion-menu [content]="nav">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Main Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <ion-list>\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */]])
 ], MyApp);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=app.component.js.map
 
 /***/ })
 
-},[191]);
+},[192]);
 //# sourceMappingURL=main.js.map

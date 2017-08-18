@@ -10,24 +10,24 @@ mine {
     text-align: center;
     width: 10vw;
     height: 10vw;
-    display: block;
+    display: table;
     float: left;
-
-
     background: $blue-200;
-
     border-bottom: 2px solid $blue-200-dark;
     border-right: 2px solid $blue-200-dark;
 
     border-top: 2px solid $blue-200-light;
     border-left: 2px solid $blue-200-light;
-    &:hover {
-      background: $blue-300;
-      border: 2px solid $blue-300;
-    }
     &.disabled {
       background-color: $blue-200-disabled;
       border-color: $blue-200-disabled;
+    }
+    .img-container {
+      display: table-cell;
+      vertical-align: middle;
+      img {
+        width: 40%;
+      }
     }
   }
   &.touched {
