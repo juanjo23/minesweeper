@@ -2,16 +2,12 @@
   [style.width.vw]="100/total"
   [style.height.vw]="100/total"
   [class.disabled]="isDisabled"
+  [class.red]="!isDisabled"
+  [class.flag]="showFlag && !isDisabled"
   (press)="setFlag($event)" >
 
 
-  <div class="img-container" *ngIf="showFlag && !isDisabled">
-    <img src="assets/images/flag.svg" alt="Flag">
-  </div>
-
-  <span *ngIf="!showFlag" >
     {{ toString() }}
-  </span>
 
 
 </div>
