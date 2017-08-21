@@ -210,7 +210,7 @@ __decorate([
 ], MineController.prototype, "mine", void 0);
 MineController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine"\n\n  [style.width.vw]="100/total"\n\n  [style.height.vw]="100/total"\n\n  [class.disabled]="isDisabled"\n\n  (press)="setFlag($event)" >\n\n\n\n\n\n  <div class="img-container" *ngIf="showFlag && !isDisabled">\n\n    <img src="assets/images/flag.svg" alt="Flag">\n\n  </div>\n\n\n\n  <span *ngIf="!showFlag" >\n\n    {{ toString() }}\n\n  </span>\n\n\n\n\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
+        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine"\n\n  [style.width.vw]="100/total"\n\n  [style.height.vw]="100/total"\n\n  [class.disabled]="isDisabled"\n\n  [class.red]="!isDisabled"\n\n  [class.flag]="showFlag && !isDisabled"\n\n  (press)="setFlag($event)" >\n\n\n\n\n\n    {{ toString() }}\n\n\n\n\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], MineController);
