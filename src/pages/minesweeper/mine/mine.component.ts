@@ -11,35 +11,42 @@ export class MineController {
 
   public isMine: boolean;
   public adjacentMines: number;
-  public isDisabled: boolean;
+  public isPressed: boolean;
   public showFlag: boolean;
+  public showContent: boolean;
+  public color: string;
 
   constructor () {
     this.isMine = false;
     this.adjacentMines = 0;
     this.showFlag = false;
+    this.showContent = true;
   }
 
   public ngOnChanges(changes: any): void {
     if (changes.mine && changes.mine.currentValue) {
       this.isMine = this.mine.isMine;
-      this.adjacentMines = this.mine.adjacentMines;
-      this.isDisabled = this.adjacentMines === 0;
+      this.adjacentMines = !this.isMine ? this.mine.adjacentMines : 0;
+      this.initValues();
     }
+  }
+
+  public initValues(): void {
+    this.isPressed = this.adjacentMines === 0 && !this.isMine;
+    this.color = `num${this.adjacentMines}`;
   }
 
   public setAdjacentMines(minesCount: number): void {
     this.adjacentMines = minesCount;
   }
 
-  public setFlag(): void {
-    this.showFlag = true;
+  public toggleFlag(): void {
+    this.showFlag = !this.showFlag;
+    this.showContent = false;
   }
 
   public toString(): string {
-    if (this.isMine) {
-      return '*';
-    } else if (this.adjacentMines > 0) {
+    if (this.adjacentMines > 0) {
       return this.adjacentMines + '';
     }
     return '';

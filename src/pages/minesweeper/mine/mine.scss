@@ -1,38 +1,69 @@
 //Material design colors: Blue grey
 $blue-200: rgb(144, 202, 249);
-$blue-200-disabled: rgb(154, 212, 259);
+$blue-200-pressed: rgb(154, 212, 259);
 $blue-200-light: #A1DBFA;
 $blue-200-dark: #80B9E8;
 $blue-300: #64B5F6;
+
+$red:       #E82C0C;
+$green:     #136927;
+$blue:      #2058A1;
+$navy-blue: #1A237E;
+$red-wine:  #802F3D;
+$dark-cyan: #0089BA;
+$dark:      #222222;
+$yellow:    #E8D100;
 
 mine {
   .mine {
     text-align: center;
     width: 10vw;
     height: 10vw;
-    display: table;
     float: left;
     background: $blue-200;
     border-bottom: 2px solid $blue-200-dark;
     border-right: 2px solid $blue-200-dark;
-
     border-top: 2px solid $blue-200-light;
     border-left: 2px solid $blue-200-light;
-
     font-weight: bold;
     font-size: 2.6rem;
     font-family: consolas;
 
-    &.disabled {
-      background-color: $blue-200-disabled;
-      border-color: $blue-200-disabled;
+    .text-wrapper {
+      width: 100%;
+      height: 100%;
+      display: table;
+      .text {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+
+    &.pressed {
+      background-color: $blue-200-pressed;
+      border-color: $blue-200-dark;
+      border-width: 1px;
     }
     &.flag {
-      background-image: url('assets/images/flag.svg');
+      background-image: url('/assets/images/flag.svg');
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
-    &.color-red {
-      color: red;
+    &.bomb {
+      background-image: url('/assets/images/bomb.svg');
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
+    &.num1 { color: $blue;      }
+    &.num2 { color: $green;     }
+    &.num3 { color: $red;       }
+    &.num4 { color: $navy-blue; }
+    &.num5 { color: $red-wine;  }
+    &.num6 { color: $dark-cyan; }
+    &.num7 { color: $dark;      }
+    &.num8 { color: $yellow;    }
   }
   &.touched {
     .mine {

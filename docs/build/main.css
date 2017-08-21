@@ -25215,7 +25215,6 @@ mine .mine {
   text-align: center;
   width: 10vw;
   height: 10vw;
-  display: table;
   float: left;
   background: #90caf9;
   border-bottom: 2px solid #80B9E8;
@@ -25227,17 +25226,67 @@ mine .mine {
   font-family: consolas;
 }
 
-mine .mine.disabled {
+mine .mine .text-wrapper {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+mine .mine .text-wrapper .text {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+mine .mine.pressed {
   background-color: #9ad4ff;
-  border-color: #9ad4ff;
+  border-color: #80B9E8;
+  border-width: 1px;
 }
 
 mine .mine.flag {
-  background-image: url("assets/images/flag.svg");
+  background-image: url("/assets/images/flag.svg");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
-mine .mine.color-red {
-  color: red;
+mine .mine.bomb {
+  background-image: url("/assets/images/bomb.svg");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+mine .mine.num1 {
+  color: #2058A1;
+}
+
+mine .mine.num2 {
+  color: #136927;
+}
+
+mine .mine.num3 {
+  color: #E82C0C;
+}
+
+mine .mine.num4 {
+  color: #1A237E;
+}
+
+mine .mine.num5 {
+  color: #802F3D;
+}
+
+mine .mine.num6 {
+  color: #0089BA;
+}
+
+mine .mine.num7 {
+  color: #222222;
+}
+
+mine .mine.num8 {
+  color: #E8D100;
 }
 
 mine.touched .mine {

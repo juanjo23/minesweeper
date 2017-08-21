@@ -175,25 +175,28 @@ var MineController = (function () {
         this.isMine = false;
         this.adjacentMines = 0;
         this.showFlag = false;
+        this.showContent = true;
     }
     MineController.prototype.ngOnChanges = function (changes) {
         if (changes.mine && changes.mine.currentValue) {
             this.isMine = this.mine.isMine;
-            this.adjacentMines = this.mine.adjacentMines;
-            this.isDisabled = this.adjacentMines === 0;
+            this.adjacentMines = !this.isMine ? this.mine.adjacentMines : 0;
+            this.initValues();
         }
+    };
+    MineController.prototype.initValues = function () {
+        this.isPressed = this.adjacentMines === 0 && !this.isMine;
+        this.color = "num" + this.adjacentMines;
     };
     MineController.prototype.setAdjacentMines = function (minesCount) {
         this.adjacentMines = minesCount;
     };
-    MineController.prototype.setFlag = function () {
-        this.showFlag = true;
+    MineController.prototype.toggleFlag = function () {
+        this.showFlag = !this.showFlag;
+        this.showContent = false;
     };
     MineController.prototype.toString = function () {
-        if (this.isMine) {
-            return '*';
-        }
-        else if (this.adjacentMines > 0) {
+        if (this.adjacentMines > 0) {
             return this.adjacentMines + '';
         }
         return '';
@@ -210,7 +213,7 @@ __decorate([
 ], MineController.prototype, "mine", void 0);
 MineController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine"\n\n  [style.width.vw]="100/total"\n\n  [style.height.vw]="100/total"\n\n  [class.disabled]="isDisabled"\n\n  [class.red]="!isDisabled"\n\n  [class.flag]="showFlag && !isDisabled"\n\n  (press)="setFlag($event)" >\n\n\n\n\n\n    {{ toString() }}\n\n\n\n\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
+        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine {{color}}"\n\n  [style.width.vw]="100/total"\n\n  [style.height.vw]="100/total"\n\n  [class.pressed]="isPressed"\n\n  [class.red]="!isPressed"\n\n  [class.flag]="showFlag && !isDisabled"\n\n  [class.bomb]="isMine"\n\n  (press)="toggleFlag($event)" >\n\n\n\n  <div class="text-wrapper">\n\n    <span class="text">\n\n        <span class="mine-text" *ngIf="showContent"> {{toString()}} </span>\n\n    </span>\n\n  </div>\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], MineController);

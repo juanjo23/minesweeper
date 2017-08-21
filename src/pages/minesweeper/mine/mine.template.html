@@ -1,13 +1,15 @@
-<div class="mine"
+<div class="mine {{color}}"
   [style.width.vw]="100/total"
   [style.height.vw]="100/total"
-  [class.disabled]="isDisabled"
-  [class.red]="!isDisabled"
+  [class.pressed]="isPressed"
+  [class.red]="!isPressed"
   [class.flag]="showFlag && !isDisabled"
-  (press)="setFlag($event)" >
+  [class.bomb]="isMine"
+  (press)="toggleFlag($event)" >
 
-
-    {{ toString() }}
-
-
+  <div class="text-wrapper">
+    <span class="text">
+        <span class="mine-text" *ngIf="showContent"> {{toString()}} </span>
+    </span>
+  </div>
 </div>
