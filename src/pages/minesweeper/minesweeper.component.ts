@@ -25,27 +25,27 @@ export class MinesweeperController {
 
     if (i > 0 ) {
       this.mines[i - 1][j].tapMine();
+      if (j > 0) {
+        this.mines[i - 1][j - 1].tapMine();
+      }
+      if (j < length - 1 ) {
+        this.mines[i - 1][j + 1].tapMine();
+      }
     }
     if (j > 0) {
       this.mines[i][j - 1].tapMine();
+      if (i < length - 1) {
+        this.mines[i + 1][j - 1].tapMine();
+      }
     }
-    if (i > 0 && j > 0 ) {
-      this.mines[i - 1][j - 1].tapMine();
-    }
-    if (i > 0 && j < length - 1 ) {
-        this.mines[i - 1][j + 1].tapMine();
-    }
-    if (i < length - 1) {
+    if ( i < length - 1 ) {
       this.mines[i + 1][j].tapMine();
-    }
-    if (i < length - 1 && j > 0) {
-      this.mines[i + 1][j - 1].tapMine();
+      if (j < length - 1) {
+        this.mines[i + 1][j + 1].tapMine();
+      }
     }
     if (j < length - 1) {
       this.mines[i][j + 1].tapMine();
-    }
-    if (i < length - 1 && j < length - 1) {
-      this.mines[i + 1][j + 1].tapMine();
     }
 
     console.log(mine.pos.x, mine.pos.y);
