@@ -23,16 +23,14 @@ export class MinesweeperController {
     const j: number = mine.pos.y;
     const length: number = this.mines.length;
 
-    function safe(index: number): number {
-      return index < 0 ? index + 1 : (index > this.mines.length - 1 ? index - 1 : index);
-    }
-    this.mines[safe(i - 1)][safe(j)].tapMine();
+    const safe: Function = (index: number) => index < 0 ? index + 1 : (index > length - 1 ? index - 1 : index);
     this.mines[safe(i)][safe(j - 1)].tapMine();
     this.mines[safe(i)][safe(j + 1)].tapMine();
-    this.mines[safe(i - 1)][safe(j - 1)].tapMine();
-    this.mines[safe(i - 1)][safe(j + 1)].tapMine();
+    this.mines[safe(i - 1)][safe(j)].tapMine();
     this.mines[safe(i + 1)][safe(j)].tapMine();
     this.mines[safe(i + 1)][safe(j - 1)].tapMine();
     this.mines[safe(i + 1)][safe(j + 1)].tapMine();
+    this.mines[safe(i - 1)][safe(j - 1)].tapMine();
+    this.mines[safe(i - 1)][safe(j + 1)].tapMine();
   }
 }
