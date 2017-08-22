@@ -23,39 +23,16 @@ export class MinesweeperController {
     const j: number = mine.pos.y;
     const length: number = this.mines.length;
 
-    if (i > 0 ) {
-      this.mines[i - 1][j].tapMine();
-      if (j > 0) {
-        this.mines[i - 1][j - 1].tapMine();
-      }
-      if (j < length - 1 ) {
-        this.mines[i - 1][j + 1].tapMine();
-      }
+    function safe(index: number): number {
+      return index < 0 ? index + 1 : (index > this.mines.length - 1 ? index - 1 : index);
     }
-    if (j > 0) {
-      this.mines[i][j - 1].tapMine();
-      if (i < length - 1) {
-        this.mines[i + 1][j - 1].tapMine();
-      }
-    }
-    if ( i < length - 1 ) {
-      this.mines[i + 1][j].tapMine();
-      if (j < length - 1) {
-        this.mines[i + 1][j + 1].tapMine();
-      }
-    }
-    if (j < length - 1) {
-      this.mines[i][j + 1].tapMine();
-    }
-
-    console.log(mine.pos.x, mine.pos.y);
-    this.mines[0][0].showContent = false;
-    this.mines[2][2].showContent = true;
-    this.mines[3][3].showContent = true;
-    this.mines[4][4].showContent = true;
-    this.mines[5][5].showContent = true;
-    this.mines[6][6].showContent = true;
-    this.mines[7][7].showContent = true;
+    this.mines[safe(i - 1)][safe(j)].tapMine();
+    this.mines[safe(i)][safe(j - 1)].tapMine();
+    this.mines[safe(i)][safe(j + 1)].tapMine();
+    this.mines[safe(i - 1)][safe(j - 1)].tapMine();
+    this.mines[safe(i - 1)][safe(j + 1)].tapMine();
+    this.mines[safe(i + 1)][safe(j)].tapMine();
+    this.mines[safe(i + 1)][safe(j - 1)].tapMine();
+    this.mines[safe(i + 1)][safe(j + 1)].tapMine();
   }
-
 }
