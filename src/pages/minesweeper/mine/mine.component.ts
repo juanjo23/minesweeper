@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'mine',
@@ -6,33 +6,38 @@ import { Component, Input } from '@angular/core';
 })
 
 export class MineController {
-  @Input() public total: any;
-  @Input() public mine: any;
+  @Input() public total: number;
+  @Input() public mine: MineController;
+  @Input() public showContent: boolean;
+  @Input() public isPressed: boolean;
+  @Output() public unhideAdjacents: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  public pos: {x, y};
   public isMine: boolean;
   public adjacentMines: number;
-  public isPressed: boolean;
   public showFlag: boolean;
-  public showContent: boolean;
   public color: string;
 
   constructor () {
+    this.pos = {x: 0, y: 0};
     this.isMine = false;
     this.adjacentMines = 0;
     this.showFlag = false;
-    this.showContent = true;
+    this.showContent = false;
+    this.isPressed = false;
   }
 
   public ngOnChanges(changes: any): void {
     if (changes.mine && changes.mine.currentValue) {
-      this.isMine = this.mine.isMine;
-      this.adjacentMines = !this.isMine ? this.mine.adjacentMines : 0;
       this.initValues();
     }
   }
 
   public initValues(): void {
-    this.isPressed = this.adjacentMines === 0 && !this.isMine;
+    this.isMine = this.mine.isMine;
+    this.adjacentMines = !this.isMine ? this.mine.adjacentMines : 0;
+    this.showContent = this.mine.showContent;
+    this.isPressed = this.mine.isPressed;
     this.color = `num${this.adjacentMines}`;
   }
 
@@ -43,6 +48,14 @@ export class MineController {
   public toggleFlag(): void {
     this.showFlag = !this.showFlag;
     this.showContent = false;
+  }
+
+  public tapMine(): void {
+    this.showContent = true;
+    this.isPressed = true;
+    if (this.adjacentMines === 0) {
+      this.unhideAdjacents.emit();
+    }
   }
 
   public toString(): string {

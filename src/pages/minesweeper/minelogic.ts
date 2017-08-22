@@ -1,25 +1,7 @@
-export class Box {
-  public isMine: boolean;
-  public adjacentMines: number;
+import {MineController} from './mine/mine.component';
 
-  constructor () {
-    this.isMine = false;
-    this.adjacentMines = 0;
-  }
-  public setAdjacentMines(minesCount: number): void {
-    this.adjacentMines = minesCount;
-  }
-  public toString(): string {
-    if (this.isMine) {
-      return '*';
-    } else if (this.adjacentMines > 0) {
-      return `${this.adjacentMines}`;
-    }
-    return '-';
-  }
-}
 export class MineLogic {
-  public mines: Box[][] = [];
+  public mines: MineController[][] = [];
   public MINES_MAX: number = 15;
   public MINES_LENGTH: number = 8;
   public randomMines: number[];
@@ -34,7 +16,8 @@ export class MineLogic {
     for (let i: number = 0; i < this.MINES_LENGTH; i += 1) {
       this.mines.push([]);
       for (let j: number = 0; j < this.MINES_LENGTH; j += 1) {
-        this.mines[i][j] = new Box();
+        this.mines[i][j] = new MineController();
+        this.mines[i][j].pos = {x: i, y: j};
       }
     }
   }

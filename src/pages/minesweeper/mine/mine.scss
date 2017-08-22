@@ -45,13 +45,13 @@ mine {
       border-width: 1px;
     }
     &.flag {
-      background-image: url('/assets/images/flag.svg');
+      background-image: url('../assets/images/flag.svg');
       background-size: 60%;
       background-repeat: no-repeat;
       background-position: center center;
     }
     &.bomb {
-      background-image: url('/assets/images/bomb.svg');
+      background-image: url('../assets/images/bomb.svg');
       background-size: 60%;
       background-repeat: no-repeat;
       background-position: center center;

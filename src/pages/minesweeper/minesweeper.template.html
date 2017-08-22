@@ -18,8 +18,7 @@
 
 <ion-content class="no-scroll">
   <div *ngFor="let row of mines">
-    <mine *ngFor="let mine of row" [mine]="mine" [total]="mines.length"></mine>
-    <!--span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span-->
+    <mine *ngFor="let mine of row" [mine]="mine" [total]="mines.length" [showContent]="mine.showContent" [isPressed]="mine.isPressed" (unhideAdjacents)="unhideAdjacents(mine)"></mine>
   </div>
 
   <ion-icon name="happy"></ion-icon>

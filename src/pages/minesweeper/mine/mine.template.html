@@ -5,7 +5,8 @@
   [class.red]="!isPressed"
   [class.flag]="showFlag && !isDisabled"
   [class.bomb]="isMine"
-  (press)="toggleFlag($event)" >
+  (press)="toggleFlag($event)"
+  (tap)="tapMine($event)" >
 
   <div class="text-wrapper">
     <span class="text">
