@@ -25216,7 +25216,7 @@ mine .mine {
   width: 10vw;
   height: 10vw;
   float: left;
-  background: #90caf9;
+  background-color: #90caf9;
   border-bottom: 2px solid #80B9E8;
   border-right: 2px solid #80B9E8;
   border-top: 2px solid #A1DBFA;
@@ -25224,6 +25224,9 @@ mine .mine {
   font-weight: bold;
   font-size: 2.6rem;
   font-family: consolas;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 60%;
 }
 
 mine .mine .text-wrapper {
@@ -25244,17 +25247,16 @@ mine .mine.pressed {
 }
 
 mine .mine.flag {
-  background-image: url("/assets/images/flag.svg");
-  background-size: 60%;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-image: url("../assets/images/flag.svg");
 }
 
 mine .mine.bomb {
-  background-image: url("/assets/images/bomb.svg");
-  background-size: 60%;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-image: url("../assets/images/bomb.svg");
+}
+
+mine .mine.boom {
+  background-color: #CC4B4C;
+  background-image: url("../assets/images/bomb.svg");
 }
 
 mine .mine.num1 {
@@ -25266,7 +25268,7 @@ mine .mine.num2 {
 }
 
 mine .mine.num3 {
-  color: #E82C0C;
+  color: #CC4B4C;
 }
 
 mine .mine.num4 {

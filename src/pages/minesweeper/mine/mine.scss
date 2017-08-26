@@ -5,7 +5,7 @@ $blue-200-light: #A1DBFA;
 $blue-200-dark: #80B9E8;
 $blue-300: #64B5F6;
 
-$red:       #E82C0C;
+$red:       #CC4B4C;
 $green:     #136927;
 $blue:      #2058A1;
 $navy-blue: #1A237E;
@@ -14,13 +14,20 @@ $dark-cyan: #0089BA;
 $dark:      #222222;
 $yellow:    #E8D100;
 
+//Mixin for background cover base
+@mixin bgCover() {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 60%;
+}
+
 mine {
   .mine {
     text-align: center;
     width: 10vw;
     height: 10vw;
     float: left;
-    background: $blue-200;
+    background-color: $blue-200;
     border-bottom: 2px solid $blue-200-dark;
     border-right: 2px solid $blue-200-dark;
     border-top: 2px solid $blue-200-light;
@@ -28,6 +35,7 @@ mine {
     font-weight: bold;
     font-size: 2.6rem;
     font-family: consolas;
+    @include bgCover();
 
     .text-wrapper {
       width: 100%;
@@ -46,16 +54,15 @@ mine {
     }
     &.flag {
       background-image: url('../assets/images/flag.svg');
-      background-size: 60%;
-      background-repeat: no-repeat;
-      background-position: center center;
     }
     &.bomb {
       background-image: url('../assets/images/bomb.svg');
-      background-size: 60%;
-      background-repeat: no-repeat;
-      background-position: center center;
     }
+    &.boom {
+      background-color: $red;
+      background-image: url('../assets/images/bomb.svg');
+    }
+
     &.num1 { color: $blue;      }
     &.num2 { color: $green;     }
     &.num3 { color: $red;       }

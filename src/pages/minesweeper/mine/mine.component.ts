@@ -11,12 +11,15 @@ export class MineController {
   @Input() public showContent: boolean;
   @Input() public isPressed: boolean;
   @Output() public unhideAdjacents: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public onLostGame: EventEmitter <void> = new EventEmitter<void>();
 
   public pos: {x, y};
   public isMine: boolean;
   public adjacentMines: number;
   public showFlag: boolean;
   public color: string;
+  public wrongTap: boolean;
+  public toString = () => this.adjacentMines > 0 ? `${this.adjacentMines}` : '';
 
   constructor () {
     this.pos = {x: 0, y: 0};
@@ -25,6 +28,7 @@ export class MineController {
     this.showFlag = false;
     this.showContent = false;
     this.isPressed = false;
+    this.wrongTap = false;
   }
 
   public ngOnChanges(changes: any): void {
@@ -53,16 +57,18 @@ export class MineController {
   public tapMine(): void {
     this.showContent = true;
     this.isPressed = true;
-    if (this.adjacentMines === 0) {
+    if (!this.isGameOver() && this.adjacentMines === 0) {
       this.unhideAdjacents.emit();
     }
   }
 
-  public toString(): string {
-    if (this.adjacentMines > 0) {
-      return this.adjacentMines + '';
+  public isGameOver(): boolean {
+    if (this.isMine) {
+      this.wrongTap = true;
+      this.onLostGame.emit();
+      return true;
+    } else {
+      console.log('hi');
     }
-    return '';
   }
-
 }
