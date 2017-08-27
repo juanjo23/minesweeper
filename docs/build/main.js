@@ -38,6 +38,114 @@ webpackEmptyAsyncContext.id = 151;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineController; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MineController = (function () {
+    function MineController() {
+        var _this = this;
+        this.unhideAdjacents = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.onLostGame = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.toString = function () { return _this.closeMines > 0 ? _this.closeMines : ''; };
+        this.pos = { x: 0, y: 0 };
+        this.isMine = false;
+        this.closeMines = 0;
+        this.showFlag = false;
+        this.showContent = false;
+        this.isPressed = false;
+        this.wrongTap = false;
+    }
+    MineController.prototype.ngOnChanges = function (changes) {
+        if (changes.mine && changes.mine.currentValue) {
+            this.initValues();
+        }
+    };
+    MineController.prototype.initValues = function () {
+        this.isMine = this.mine.isMine;
+        this.closeMines = !this.isMine ? this.mine.closeMines : 0;
+        this.showContent = this.mine.showContent;
+        this.isPressed = this.mine.isPressed;
+        this.color = "num" + this.closeMines;
+    };
+    MineController.prototype.setCloseMines = function (minesCount) {
+        this.closeMines = minesCount;
+    };
+    MineController.prototype.toggleFlag = function () {
+        this.showFlag = !this.showFlag;
+        this.showContent = false;
+    };
+    MineController.prototype.tapMine = function () {
+        this.showContent = true;
+        this.isPressed = true;
+        if (!this.isGameOver() && this.closeMines === 0) {
+            this.unhideAdjacents.emit();
+        }
+    };
+    MineController.prototype.isGameOver = function () {
+        if (this.isMine) {
+            this.wrongTap = true;
+            this.onLostGame.emit();
+            return true;
+        }
+        else {
+            console.log('Game is not over');
+        }
+    };
+    return MineController;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Number)
+], MineController.prototype, "total", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", MineController)
+], MineController.prototype, "mine", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Boolean)
+], MineController.prototype, "showContent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Boolean)
+], MineController.prototype, "isPressed", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Boolean)
+], MineController.prototype, "isGameLost", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _a || Object)
+], MineController.prototype, "unhideAdjacents", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _b || Object)
+], MineController.prototype, "onLostGame", void 0);
+MineController = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine {{color}}"\n\n  [style.width.vw]="100/total"\n\n  [style.height.vw]="100/total"\n\n  [class.pressed]="isPressed"\n\n  [class.red]="!isPressed"\n\n  [class.flag]="showFlag && !isDisabled"\n\n  [class.bomb]="isGameLost && isMine"\n\n  [class.boom]="wrongTap"\n\n  (press)="toggleFlag($event)"\n\n  (tap)="tapMine($event)" >\n\n\n\n  <div class="text-wrapper">\n\n    <span class="text">\n\n        <span class="mine-text" *ngIf="showContent"> {{toString()}} </span>\n\n    </span>\n\n  </div>\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
+    }),
+    __metadata("design:paramtypes", [])
+], MineController);
+
+var _a, _b;
+//# sourceMappingURL=mine.component.js.map
+
+/***/ }),
+
+/***/ 192:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MinesweeperController; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
@@ -55,38 +163,100 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MinesweeperController = (function () {
-    function MinesweeperController(navCtrl) {
+    function MinesweeperController(navCtrl, toastCtrl) {
         this.navCtrl = navCtrl;
+        this.toastCtrl = toastCtrl;
         this.icon = 'happy';
-        var a = new __WEBPACK_IMPORTED_MODULE_2__minelogic__["a" /* MineLogic */]();
-        this.mines = a.mines;
+        this.newGame();
     }
-    MinesweeperController.prototype.tapEvent = function () {
-        this.icon = this.icon === 'happy' ? 'sad' : 'happy';
+    MinesweeperController.prototype.newGame = function () {
+        var mineLogic = new __WEBPACK_IMPORTED_MODULE_2__minelogic__["a" /* MineLogic */](8, 10);
+        this.mines = mineLogic.mines;
+        this.isGameLost = false;
     };
-    MinesweeperController.prototype.pressEvent = function () {
-        this.icon = this.icon === 'happy' ? 'sad' : 'happy';
+    MinesweeperController.prototype.gameLost = function () {
+        this.isGameLost = true;
+        this.presentToast('Perdiste el juego :(', 'JUEGO NUEVO');
+    };
+    /*
+    public openModal(): void {
+      const modal: any = this.modalCtrl.create(ModalContentPage);
+      modal.present();
+    }
+    */
+    MinesweeperController.prototype.presentToast = function (msj, closeText, duration) {
+        var _this = this;
+        if (duration === void 0) { duration = undefined; }
+        var toast = this.toastCtrl.create({
+            message: msj,
+            showCloseButton: true,
+            closeButtonText: closeText
+        });
+        if (duration) {
+            toast.setDuration(duration);
+        }
+        toast.onWillDismiss(function () {
+            _this.newGame();
+        });
+        toast.present();
+    };
+    MinesweeperController.prototype.unhideAdjacents = function (i, j) {
+        var _this = this;
+        var isSafe = function (index) { return index >= 0 && index < _this.mines.length; };
+        if (isSafe(j - 1)) {
+            this.tapAndVisitNeighbors(i, j - 1);
+        }
+        if (isSafe(i + 1) && isSafe(j - 1)) {
+            this.tapAndVisitNeighbors(i + 1, j - 1);
+        }
+        if (isSafe(i + 1)) {
+            this.tapAndVisitNeighbors(i + 1, j);
+        }
+        if (isSafe(i + 1) && isSafe(j + 1)) {
+            this.tapAndVisitNeighbors(i + 1, j + 1);
+        }
+        if (isSafe(j + 1)) {
+            this.tapAndVisitNeighbors(i, j + 1);
+        }
+        if (isSafe(i - 1) && isSafe(j + 1)) {
+            this.tapAndVisitNeighbors(i - 1, j + 1);
+        }
+        if (isSafe(i - 1)) {
+            this.tapAndVisitNeighbors(i - 1, j);
+        }
+        if (isSafe(i - 1) && isSafe(j - 1)) {
+            this.tapAndVisitNeighbors(i - 1, j - 1);
+        }
+    };
+    MinesweeperController.prototype.tapAndVisitNeighbors = function (i, j) {
+        if (!this.mines[i][j].isPressed) {
+            this.mines[i][j].tapMine();
+            if (this.mines[i][j].closeMines === 0) {
+                this.unhideAdjacents(i, j);
+            }
+        }
     };
     return MinesweeperController;
 }());
 MinesweeperController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n  <ion-navbar class="main-toolbar">\n    <button ion-button menuToggle icon-only>\n      <ion-icon color="light" name=\'menu\'></ion-icon>\n    </button>\n    <ion-title>\n      My Minesweeper\n    </ion-title>\n  </ion-navbar>\n\n  <ion-navbar>\n    <ion-title>\n      <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="no-scroll">\n  <div *ngFor="let row of mines">\n    <mine *ngFor="let mine of row" [mine]="mine" [total]="mines.length"></mine>\n    <!--span (press)="pressEvent()" (tap)="tapEvent()"  *ngFor="let mine of row" >{{ mine }}</span-->\n  </div>\n\n  <ion-icon name="happy"></ion-icon>\n  <ion-icon name="sad"></ion-icon>\n  <ion-icon name="sad"></ion-icon> <br>\n  <div class="red">\n    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, sit porro. Dolores, hic similique accusantium deserunt reprehenderit in laudantium nostrum laborum suscipit, modi exercitationem pariatur cum sit aut ex quibusdam!\n  </div>\n</ion-content>\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/
+        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n\n  <ion-navbar class="main-toolbar">\n\n    <button ion-button menuToggle icon-only>\n\n      <ion-icon color="light" name=\'menu\'></ion-icon>\n\n    </button>\n\n    <ion-title>\n\n      My Minesweeper\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n  <ion-navbar>\n\n    <ion-title>\n\n      <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="no-scroll">\n\n  <div *ngFor="let row of mines">\n\n    <mine *ngFor="let mine of row"\n\n      [mine]="mine"\n\n      [total]="mines.length"\n\n      [showContent]="mine.showContent"\n\n      [isPressed]="mine.isPressed"\n\n      [isGameLost]="isGameLost"\n\n      (unhideAdjacents)="unhideAdjacents(mine.pos.x, mine.pos.y)"\n\n      (onLostGame)="gameLost()" >\n\n      >\n\n    </mine>\n\n  </div>\n\n  <ion-icon name="sad"></ion-icon>\n\n</ion-content>\n\n\n\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]) === "function" && _b || Object])
 ], MinesweeperController);
 
+var _a, _b;
 //# sourceMappingURL=minesweeper.component.js.map
 
 /***/ }),
 
-/***/ 192:
+/***/ 193:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(212);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -94,7 +264,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 211:
+/***/ 212:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104,8 +274,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_minesweeper_mine_mine_component__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_minesweeper_minesweeper_component__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_minesweeper_mine_mine_component__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_minesweeper_minesweeper_component__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(262);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -154,105 +324,20 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 260:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineController; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var MineController = (function () {
-    function MineController() {
-        this.isMine = false;
-        this.adjacentMines = 0;
-        this.showFlag = false;
-        this.showContent = true;
-    }
-    MineController.prototype.ngOnChanges = function (changes) {
-        if (changes.mine && changes.mine.currentValue) {
-            this.isMine = this.mine.isMine;
-            this.adjacentMines = !this.isMine ? this.mine.adjacentMines : 0;
-            this.initValues();
-        }
-    };
-    MineController.prototype.initValues = function () {
-        this.isPressed = this.adjacentMines === 0 && !this.isMine;
-        this.color = "num" + this.adjacentMines;
-    };
-    MineController.prototype.setAdjacentMines = function (minesCount) {
-        this.adjacentMines = minesCount;
-    };
-    MineController.prototype.toggleFlag = function () {
-        this.showFlag = !this.showFlag;
-        this.showContent = false;
-    };
-    MineController.prototype.toString = function () {
-        if (this.adjacentMines > 0) {
-            return this.adjacentMines + '';
-        }
-        return '';
-    };
-    return MineController;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", Object)
-], MineController.prototype, "total", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", Object)
-], MineController.prototype, "mine", void 0);
-MineController = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'mine',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/'<div class="mine {{color}}"\n\n  [style.width.vw]="100/total"\n\n  [style.height.vw]="100/total"\n\n  [class.pressed]="isPressed"\n\n  [class.red]="!isPressed"\n\n  [class.flag]="showFlag && !isDisabled"\n\n  [class.bomb]="isMine"\n\n  (press)="toggleFlag($event)" >\n\n\n\n  <div class="text-wrapper">\n\n    <span class="text">\n\n        <span class="mine-text" *ngIf="showContent"> {{toString()}} </span>\n\n    </span>\n\n  </div>\n\n</div>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\mine\mine.template.html"*/
-    }),
-    __metadata("design:paramtypes", [])
-], MineController);
-
-//# sourceMappingURL=mine.component.js.map
-
-/***/ }),
-
 /***/ 261:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export Box */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineLogic; });
-var Box = (function () {
-    function Box() {
-        this.isMine = false;
-        this.adjacentMines = 0;
-    }
-    Box.prototype.setAdjacentMines = function (minesCount) {
-        this.adjacentMines = minesCount;
-    };
-    Box.prototype.toString = function () {
-        if (this.isMine) {
-            return '*';
-        }
-        else if (this.adjacentMines > 0) {
-            return "" + this.adjacentMines;
-        }
-        return '-';
-    };
-    return Box;
-}());
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mine_mine_component__ = __webpack_require__(191);
 
 var MineLogic = (function () {
-    function MineLogic() {
+    function MineLogic(MINES_LENGTH, MINES_CANT) {
+        if (MINES_LENGTH === void 0) { MINES_LENGTH = 15; }
+        if (MINES_CANT === void 0) { MINES_CANT = 8; }
+        this.MINES_LENGTH = MINES_LENGTH;
+        this.MINES_CANT = MINES_CANT;
         this.mines = [];
-        this.MINES_MAX = 15;
-        this.MINES_LENGTH = 8;
         this.joinNumbers = function (x, y) { return parseInt([x, y].join(''), 10); };
         this.initGrid();
         this.generateRandomMines();
@@ -263,7 +348,8 @@ var MineLogic = (function () {
         for (var i = 0; i < this.MINES_LENGTH; i += 1) {
             this.mines.push([]);
             for (var j = 0; j < this.MINES_LENGTH; j += 1) {
-                this.mines[i][j] = new Box();
+                this.mines[i][j] = new __WEBPACK_IMPORTED_MODULE_0__mine_mine_component__["a" /* MineController */]();
+                this.mines[i][j].pos = { x: i, y: j };
             }
         }
     };
@@ -280,7 +366,7 @@ var MineLogic = (function () {
                 this.randomMines.push(rand);
                 cont += 1;
             }
-        } while (cont < this.MINES_MAX);
+        } while (cont < this.MINES_CANT);
     };
     MineLogic.prototype.setMines = function () {
         var _this = this;
@@ -304,7 +390,7 @@ var MineLogic = (function () {
         for (var i = 0; i < this.MINES_LENGTH; i += 1) {
             for (var j = 0; j < this.MINES_LENGTH; j += 1) {
                 var minesNumber = this.countAdjacentMines(i, j);
-                this.mines[i][j].setAdjacentMines(minesNumber);
+                this.mines[i][j].setCloseMines(minesNumber);
             }
         }
     };
@@ -352,7 +438,7 @@ var MineLogic = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_minesweeper_minesweeper_component__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_minesweeper_minesweeper_component__ = __webpack_require__(192);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -406,7 +492,7 @@ var MyApp = (function () {
     return MyApp;
 }());
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/'<ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>\n\n<ion-menu [content]="nav">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Main Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <ion-list>\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/'<ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>\n\n<ion-menu [content]="nav">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-buttons start>\n        <button ion-button icon-only color="royal">\n          <ion-icon name="search"></ion-icon>\n        </button>\n      </ion-buttons>\n      <ion-title>Send To...</ion-title>\n      <ion-buttons end>\n        <button ion-button icon-only color="royal">\n          <ion-icon name="person-add"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n\n\n  <ion-content>\n    <ion-list>\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */]])
 ], MyApp);
@@ -415,5 +501,5 @@ MyApp = __decorate([
 
 /***/ })
 
-},[192]);
+},[193]);
 //# sourceMappingURL=main.js.map
