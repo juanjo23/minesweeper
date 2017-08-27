@@ -56,11 +56,14 @@ mine {
       background-image: url('../assets/images/flag.svg');
     }
     &.bomb {
+      background-color: $blue-200-pressed;
+      border-color: $blue-200-dark;
+      border-width: 1px;
       background-image: url('../assets/images/bomb.svg');
     }
     &.boom {
       background-color: $red;
-      background-image: url('../assets/images/bomb.svg');
+      border: none;
     }
 
     &.num1 { color: $blue;      }

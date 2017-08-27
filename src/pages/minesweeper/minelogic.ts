@@ -2,10 +2,9 @@ import {MineController} from './mine/mine.component';
 
 export class MineLogic {
   public mines: MineController[][] = [];
-  public MINES_MAX: number = 15;
-  public MINES_LENGTH: number = 8;
+
   public randomMines: number[];
-  constructor () {
+  constructor (private MINES_LENGTH: number = 15, private MINES_CANT: number = 8) {
     this.initGrid();
     this.generateRandomMines();
     this.setMines();
@@ -35,7 +34,7 @@ export class MineLogic {
         this.randomMines.push(rand);
         cont += 1;
       }
-    } while (cont < this.MINES_MAX);
+    } while (cont < this.MINES_CANT);
   }
 
   private joinNumbers = (x: number, y: number) => parseInt([x, y].join(''), 10);

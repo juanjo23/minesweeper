@@ -10,6 +10,7 @@ export class MineController {
   @Input() public mine: MineController;
   @Input() public showContent: boolean;
   @Input() public isPressed: boolean;
+  @Input() public isGameLost: boolean;
   @Output() public unhideAdjacents: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() public onLostGame: EventEmitter<void> = new EventEmitter<void>();
 

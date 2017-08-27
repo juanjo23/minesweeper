@@ -4,9 +4,21 @@
 
   <ion-header>
     <ion-toolbar>
-      <ion-title>Main Menu</ion-title>
+      <ion-buttons start>
+        <button ion-button icon-only color="royal">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Send To...</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="royal">
+          <ion-icon name="person-add"></ion-icon>
+        </button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+
   <ion-content>
     <ion-list>
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
