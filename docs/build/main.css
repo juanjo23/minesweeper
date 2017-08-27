@@ -25223,7 +25223,7 @@ mine .mine {
   border-left: 2px solid #A1DBFA;
   font-weight: bold;
   font-size: 2.6rem;
-  font-family: consolas,monaco,monospace;
+  font-family: menlo,monaco,monospace;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 60%;
