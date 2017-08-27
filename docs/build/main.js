@@ -124,11 +124,11 @@ __decorate([
 ], MineController.prototype, "isGameLost", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
 ], MineController.prototype, "unhideAdjacents", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _b || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
 ], MineController.prototype, "onLostGame", void 0);
 MineController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -137,7 +137,6 @@ MineController = __decorate([
     __metadata("design:paramtypes", [])
 ], MineController);
 
-var _a, _b;
 //# sourceMappingURL=mine.component.js.map
 
 /***/ }),
@@ -240,12 +239,11 @@ var MinesweeperController = (function () {
 }());
 MinesweeperController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n\n  <ion-navbar class="main-toolbar">\n\n    <button ion-button menuToggle icon-only>\n\n      <ion-icon color="light" name=\'menu\'></ion-icon>\n\n    </button>\n\n    <ion-title>\n\n      My Minesweeper\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n  <ion-navbar>\n\n    <ion-title>\n\n      <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="no-scroll">\n\n  <div *ngFor="let row of mines">\n\n    <mine *ngFor="let mine of row"\n\n      [mine]="mine"\n\n      [total]="mines.length"\n\n      [showContent]="mine.showContent"\n\n      [isPressed]="mine.isPressed"\n\n      [isGameLost]="isGameLost"\n\n      (unhideAdjacents)="unhideAdjacents(mine.pos.x, mine.pos.y)"\n\n      (onLostGame)="gameLost()" >\n\n      >\n\n    </mine>\n\n  </div>\n\n  <ion-icon name="sad"></ion-icon>\n\n</ion-content>\n\n\n\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/
+        selector: 'minesweeper',template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/'<ion-header>\n\n  <ion-navbar class="main-toolbar">\n\n    <button ion-button menuToggle icon-only>\n\n      <ion-icon color="light" name=\'menu\'></ion-icon>\n\n    </button>\n\n    <ion-title>\n\n      My Minesweeper\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n  <ion-navbar>\n\n    <ion-title>\n\n      <ion-icon [name]="icon" [color]="color" style="font-size:25px;"></ion-icon>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content class="no-scroll">\n\n  <div *ngFor="let row of mines">\n\n    <mine *ngFor="let mine of row"\n\n      [mine]="mine"\n\n      [total]="mines.length"\n\n      [showContent]="mine.showContent"\n\n      [isPressed]="mine.isPressed"\n\n      [isGameLost]="isGameLost"\n\n      (unhideAdjacents)="unhideAdjacents(mine.pos.x, mine.pos.y)"\n\n      (onLostGame)="gameLost()" >\n\n      >\n\n    </mine>\n\n  </div>\n\n  <ion-icon name="sad"></ion-icon>\n\n</ion-content>\n\n\n\n<!-- Preload images -->\n\n<img src="../assets/images/bomb.svg" alt="" style="display:none">\n\n<img src="../assets/images/flag.svg" alt="" style="display:none">\n\n\n\n\n\n\n\n'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\pages\minesweeper\minesweeper.template.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]])
 ], MinesweeperController);
 
-var _a, _b;
 //# sourceMappingURL=minesweeper.component.js.map
 
 /***/ }),
@@ -492,7 +490,7 @@ var MyApp = (function () {
     return MyApp;
 }());
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/'<ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>\n\n<ion-menu [content]="nav">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-buttons start>\n        <button ion-button icon-only color="royal">\n          <ion-icon name="search"></ion-icon>\n        </button>\n      </ion-buttons>\n      <ion-title>Send To...</ion-title>\n      <ion-buttons end>\n        <button ion-button icon-only color="royal">\n          <ion-icon name="person-add"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n\n\n  <ion-content>\n    <ion-list>\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/'<ion-nav id="nav" [root]="rootPage" #nav swipeBackEnabled="false"></ion-nav>\n\n\n\n<ion-menu [content]="nav">\n\n\n\n  <ion-header>\n\n    <ion-toolbar>\n\n      <ion-buttons start>\n\n        <button ion-button icon-only color="royal">\n\n          <ion-icon name="search"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n      <ion-title>Send To...</ion-title>\n\n      <ion-buttons end>\n\n        <button ion-button icon-only color="royal">\n\n          <ion-icon name="person-add"></ion-icon>\n\n        </button>\n\n      </ion-buttons>\n\n    </ion-toolbar>\n\n  </ion-header>\n\n\n\n\n\n  <ion-content>\n\n    <ion-list>\n\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n        {{p.title}}\n\n      </button>\n\n    </ion-list>\n\n  </ion-content>\n\n\n\n</ion-menu>'/*ion-inline-end:"C:\Users\juan.jose.sandoval\Desktop\minesweeper\src\app\app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */]])
 ], MyApp);
