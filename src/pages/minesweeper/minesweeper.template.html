@@ -18,7 +18,13 @@
 
 <ion-content class="no-scroll">
   <div *ngFor="let row of mines">
-    <mine *ngFor="let mine of row" [mine]="mine" [total]="mines.length" [showContent]="mine.showContent" [isPressed]="mine.isPressed" (unhideAdjacents)="unhideAdjacents(mine)"></mine>
+    <mine *ngFor="let mine of row"
+      [mine]="mine"
+      [total]="mines.length"
+      [showContent]="mine.showContent"
+      [isPressed]="mine.isPressed"
+      (unhideAdjacents)="unhideAdjacents(mine.pos.x, mine.pos.y)">
+    </mine>
   </div>
 
   <ion-icon name="happy"></ion-icon>

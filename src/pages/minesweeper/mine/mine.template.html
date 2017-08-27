@@ -4,7 +4,7 @@
   [class.pressed]="isPressed"
   [class.red]="!isPressed"
   [class.flag]="showFlag && !isDisabled"
-  [class.bomb]="isMine"
+  [class.boom]="wrongTap"
   (press)="toggleFlag($event)"
   (tap)="tapMine($event)" >
 

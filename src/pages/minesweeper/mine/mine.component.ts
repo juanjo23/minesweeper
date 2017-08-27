@@ -11,20 +11,24 @@ export class MineController {
   @Input() public showContent: boolean;
   @Input() public isPressed: boolean;
   @Output() public unhideAdjacents: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public onLostGame: EventEmitter<void> = new EventEmitter<void>();
 
   public pos: {x, y};
   public isMine: boolean;
-  public adjacentMines: number;
+  public closeMines: number;
   public showFlag: boolean;
   public color: string;
+  public wrongTap: boolean;
+  public toString = () => this.closeMines > 0 ? this.closeMines : '';
 
   constructor () {
     this.pos = {x: 0, y: 0};
     this.isMine = false;
-    this.adjacentMines = 0;
+    this.closeMines = 0;
     this.showFlag = false;
     this.showContent = false;
     this.isPressed = false;
+    this.wrongTap = false;
   }
 
   public ngOnChanges(changes: any): void {
@@ -35,14 +39,14 @@ export class MineController {
 
   public initValues(): void {
     this.isMine = this.mine.isMine;
-    this.adjacentMines = !this.isMine ? this.mine.adjacentMines : 0;
+    this.closeMines = !this.isMine ? this.mine.closeMines : 0;
     this.showContent = this.mine.showContent;
     this.isPressed = this.mine.isPressed;
-    this.color = `num${this.adjacentMines}`;
+    this.color = `num${this.closeMines}`;
   }
 
-  public setAdjacentMines(minesCount: number): void {
-    this.adjacentMines = minesCount;
+  public setCloseMines(minesCount: number): void {
+    this.closeMines = minesCount;
   }
 
   public toggleFlag(): void {
@@ -53,16 +57,19 @@ export class MineController {
   public tapMine(): void {
     this.showContent = true;
     this.isPressed = true;
-    if (this.adjacentMines === 0) {
+    if (!this.isGameOver() && this.closeMines === 0) {
       this.unhideAdjacents.emit();
     }
   }
 
-  public toString(): string {
-    if (this.adjacentMines > 0) {
-      return this.adjacentMines + '';
-    }
-    return '';
-  }
 
+  public isGameOver(): boolean {
+    if (this.isMine) {
+      this.wrongTap = true;
+      this.onLostGame.emit();
+      return true;
+    } else {
+      console.log('Game is not over');
+    }
+  }
 }

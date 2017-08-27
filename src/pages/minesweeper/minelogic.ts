@@ -61,7 +61,7 @@ export class MineLogic {
     for (let i: number = 0; i < this.MINES_LENGTH; i += 1) {
       for (let j: number = 0; j < this.MINES_LENGTH; j += 1) {
         const minesNumber: number = this.countAdjacentMines(i, j);
-        this.mines[i][j].setAdjacentMines(minesNumber);
+        this.mines[i][j].setCloseMines(minesNumber);
       }
     }
   }
