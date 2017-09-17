@@ -58,19 +58,11 @@ export class MineController {
   public tapMine(): void {
     this.showContent = true;
     this.isPressed = true;
-    if (!this.isGameOver() && this.closeMines === 0) {
-      this.unhideAdjacents.emit();
-    }
-  }
-
-
-  public isGameOver(): boolean {
     if (this.isMine) {
       this.wrongTap = true;
       this.onLostGame.emit();
-      return true;
-    } else {
-      console.log('Game is not over');
+    } else if (this.closeMines === 0) {
+      this.unhideAdjacents.emit();
     }
   }
 }

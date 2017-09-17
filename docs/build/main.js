@@ -86,18 +86,12 @@ var MineController = (function () {
     MineController.prototype.tapMine = function () {
         this.showContent = true;
         this.isPressed = true;
-        if (!this.isGameOver() && this.closeMines === 0) {
-            this.unhideAdjacents.emit();
-        }
-    };
-    MineController.prototype.isGameOver = function () {
         if (this.isMine) {
             this.wrongTap = true;
             this.onLostGame.emit();
-            return true;
         }
-        else {
-            console.log('Game is not over');
+        else if (this.closeMines === 0) {
+            this.unhideAdjacents.emit();
         }
     };
     return MineController;
@@ -124,11 +118,11 @@ __decorate([
 ], MineController.prototype, "isGameLost", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _a || Object)
 ], MineController.prototype, "unhideAdjacents", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _b || Object)
 ], MineController.prototype, "onLostGame", void 0);
 MineController = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -137,6 +131,7 @@ MineController = __decorate([
     __metadata("design:paramtypes", [])
 ], MineController);
 
+var _a, _b;
 //# sourceMappingURL=mine.component.js.map
 
 /***/ }),
