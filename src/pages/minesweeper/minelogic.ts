@@ -44,7 +44,7 @@ export class MineLogic {
       const nums: string[] = (mineNumber + '').split('');
       const point: {x: number, y: number} = {x: 0, y: 0};
       if (nums.length === 1) {
-        point.y = parseInt(nums[0], 10);
+        point.x = parseInt(nums[0], 10);
       } else {
         point.y = parseInt(nums[0], 10);
         point.x = parseInt(nums[1], 10);

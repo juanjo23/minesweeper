@@ -11,8 +11,7 @@ export class MineController {
   @Input() public showContent: boolean;
   @Input() public isPressed: boolean;
   @Input() public isGameLost: boolean;
-  @Output() public unhideAdjacents: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() public onLostGame: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public mineTapped: EventEmitter<void> = new EventEmitter<void>();
 
   public pos: {x, y};
   public isMine: boolean;
@@ -60,9 +59,7 @@ export class MineController {
     this.isPressed = true;
     if (this.isMine) {
       this.wrongTap = true;
-      this.onLostGame.emit();
-    } else if (this.closeMines === 0) {
-      this.unhideAdjacents.emit();
     }
+    this.mineTapped.emit();
   }
 }

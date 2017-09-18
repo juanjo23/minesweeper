@@ -12,20 +12,32 @@ export class MinesweeperController {
   public mines: MineController[][];
   public icon: string = 'happy';
   public isGameLost: boolean;
+  public isGameWon: boolean;
+  public tappedMines: number;
+  public minesNumber: number;
+  public minesLength: number;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+    this.minesNumber = 10;
+    this.minesLength = 8;
     this.newGame();
   }
 
   public newGame(): void {
-    const mineLogic: MineLogic = new MineLogic(8, 10);
+    const mineLogic: MineLogic = new MineLogic(this.minesLength, this.minesNumber);
     this.mines = mineLogic.mines;
     this.isGameLost = false;
+    this.tappedMines = 0;
   }
 
   public gameLost(): void {
     this.isGameLost = true;
     this.presentToast('Perdiste el juego :(', 'JUEGO NUEVO');
+  }
+
+  public gameWon(): void {
+    this.isGameWon = true;
+    this.presentToast('Congrats!! Ganaste el Juego :)', 'JUEGO NUEVO');
   }
 
   /*
@@ -48,6 +60,18 @@ export class MinesweeperController {
       this.newGame();
     });
     toast.present();
+  }
+
+  public mineTapped (i: number, j: number): void {
+    this.tappedMines += 1;
+    console.log("How to use his powers in a positive way ", this.tappedMines);
+    if (this.mines[i][j].isMine) {
+      this.gameLost();
+    } else if (this.mines[i][j].closeMines === 0) {
+      this.unhideAdjacents(i, j);
+    } else if (this.tappedMines >= this.minesLength * this.minesLength - this.minesNumber ) {
+      this.gameWon();
+    }
   }
 
   public unhideAdjacents(i: number, j: number): void {
@@ -81,7 +105,12 @@ export class MinesweeperController {
 
   public tapAndVisitNeighbors(i: number, j: number): void {
     if (!this.mines[i][j].isPressed ) {
-      this.mines[i][j].tapMine();
+      this.mines[i][j].isPressed = true;
+      this.mines[i][j].showContent = true;
+      this.tappedMines += 1;
+      console.log("How to use his powers in a positive way ", this.tappedMines);
+
+      //this.mines[i][j].tapMine();
       if (this.mines[i][j].closeMines === 0) {
         this.unhideAdjacents(i, j);
       }

@@ -24,8 +24,8 @@
       [showContent]="mine.showContent"
       [isPressed]="mine.isPressed"
       [isGameLost]="isGameLost"
-      (unhideAdjacents)="unhideAdjacents(mine.pos.x, mine.pos.y)"
-      (onLostGame)="gameLost()" >
+      (mineTapped)="mineTapped(mine.pos.x, mine.pos.y)"
+    >
       >
     </mine>
   </div>
