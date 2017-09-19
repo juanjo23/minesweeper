@@ -11,6 +11,7 @@ export class MineController {
   @Input() public showContent: boolean;
   @Input() public isPressed: boolean;
   @Input() public isGameLost: boolean;
+  @Input() public isGameWon: boolean;
   @Output() public mineTapped: EventEmitter<void> = new EventEmitter<void>();
 
   public pos: {x, y};

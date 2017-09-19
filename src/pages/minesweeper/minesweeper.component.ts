@@ -27,6 +27,8 @@ export class MinesweeperController {
     const mineLogic: MineLogic = new MineLogic(this.minesLength, this.minesNumber);
     this.mines = mineLogic.mines;
     this.isGameLost = false;
+    this.isGameWon = false;
+
     this.tappedMines = 0;
   }
 
@@ -39,13 +41,6 @@ export class MinesweeperController {
     this.isGameWon = true;
     this.presentToast('Congrats!! Ganaste el Juego :)', 'JUEGO NUEVO');
   }
-
-  /*
-  public openModal(): void {
-    const modal: any = this.modalCtrl.create(ModalContentPage);
-    modal.present();
-  }
-  */
 
   public presentToast(msj: string, closeText: string, duration: number = undefined): void {
     const toast: Toast = this.toastCtrl.create({
@@ -63,8 +58,11 @@ export class MinesweeperController {
   }
 
   public mineTapped (i: number, j: number): void {
+    if (this.mines[i][j].isPressed) {
+      return;
+    }
     this.tappedMines += 1;
-    console.log("How to use his powers in a positive way ", this.tappedMines);
+    this.mines[i][j].isPressed = true;
     if (this.mines[i][j].isMine) {
       this.gameLost();
     } else if (this.mines[i][j].closeMines === 0) {
@@ -108,9 +106,6 @@ export class MinesweeperController {
       this.mines[i][j].isPressed = true;
       this.mines[i][j].showContent = true;
       this.tappedMines += 1;
-      console.log("How to use his powers in a positive way ", this.tappedMines);
-
-      //this.mines[i][j].tapMine();
       if (this.mines[i][j].closeMines === 0) {
         this.unhideAdjacents(i, j);
       }

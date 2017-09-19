@@ -24,9 +24,8 @@
       [showContent]="mine.showContent"
       [isPressed]="mine.isPressed"
       [isGameLost]="isGameLost"
-      (mineTapped)="mineTapped(mine.pos.x, mine.pos.y)"
-    >
-      >
+      [isGameWon]="isGameWon"
+      (mineTapped)="mineTapped(mine.pos.x, mine.pos.y)" >
     </mine>
   </div>
   <ion-icon name="sad"></ion-icon>

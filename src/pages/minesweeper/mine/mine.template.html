@@ -5,6 +5,7 @@
   [class.red]="!isPressed"
   [class.flag]="showFlag && !isDisabled"
   [class.bomb]="isGameLost && isMine"
+  [class.flag]="isGameWon && isMine"
   [class.boom]="wrongTap"
   (press)="toggleFlag($event)"
   (tap)="tapMine($event)" >
