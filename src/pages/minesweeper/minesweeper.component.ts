@@ -23,6 +23,10 @@ export class MinesweeperController {
     this.newGame();
   }
 
+  public ngCheck(): void {
+    console.log("query the elements");
+  }
+
   public newGame(): void {
     const mineLogic: MineLogic = new MineLogic(this.minesLength, this.minesNumber);
     this.mines = mineLogic.mines;
